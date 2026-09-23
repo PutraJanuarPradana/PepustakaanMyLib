@@ -1,0 +1,595 @@
+/* =====================================================
+   RESET & GLOBAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6f8;
+    color: #212529;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* =====================================================
+   TOPBAR / NAVBAR
+===================================================== */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+
+    z-index: 1100;
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* tombol sidebar */
+
+.sidebar-toggle {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    background: transparent;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    color: #212529;
+
+    transition: 0.2s;
+}
+
+.sidebar-toggle:hover {
+    background: #f0f1f3;
+}
+
+
+/* judul */
+
+.topbar-title {
+    margin-left: 12px;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+    position: fixed;
+
+    top: 64px;
+    left: 0;
+
+    width: 250px;
+    height: calc(100vh - 64px);
+
+    background: #ffffff;
+
+    border-right: 1px solid #e5e7eb;
+
+    padding: 18px 12px;
+
+    z-index: 1050;
+
+    overflow-y: auto;
+
+    transform: translateX(-100%);
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* sidebar dibuka */
+
+body.sidebar-open .sidebar {
+    transform: translateX(0);
+}
+
+
+/* menu */
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 11px 13px;
+    margin-bottom: 5px;
+
+    color: #343a40;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: #f0f1f3;
+}
+
+.sidebar a.active {
+    background: #e9ecef;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   SIDEBAR OVERLAY
+===================================================== */
+
+.sidebar-overlay {
+    position: fixed;
+
+    inset: 64px 0 0 0;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    z-index: 1000;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+body.sidebar-open .sidebar-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.main {
+    min-height: 100vh;
+
+    padding: 88px 25px 40px;
+
+    width: 100%;
+
+    transition: 0.25s ease;
+}
+
+
+/*
+   Sidebar tidak menggeser content.
+   Jadi saat sidebar dibuka,
+   content tetap rapi.
+*/
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card {
+    border: none;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+.card-header {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+
+    padding: 10px 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn {
+    border-radius: 8px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table {
+    vertical-align: middle;
+}
+
+.table th {
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   BOOK COVER UMUM
+===================================================== */
+
+.book-cover {
+    width: 100%;
+    height: auto;
+
+    max-height: 320px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   COVER USER PEMINJAMAN
+   TIDAK TERPOTONG
+===================================================== */
+
+.book-cover-peminjaman {
+    width: 100%;
+    height: auto;
+
+    max-height: 340px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto;
+
+    border-radius: 12px 12px 0 0;
+}
+
+
+/* =====================================================
+   BOOK CARD
+===================================================== */
+
+.book-card {
+    height: 100%;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.badge {
+    border-radius: 6px;
+
+    padding: 6px 9px;
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark-mode {
+    background: #121212;
+    color: #eeeeee;
+}
+
+
+/* topbar */
+
+body.dark-mode .topbar {
+    background: #1b1b1b;
+    border-color: #303030;
+}
+
+body.dark-mode .sidebar-toggle {
+    color: #ffffff;
+}
+
+body.dark-mode .sidebar-toggle:hover {
+    background: #2a2a2a;
+}
+
+
+/* sidebar */
+
+body.dark-mode .sidebar {
+    background: #1b1b1b;
+    border-color: #303030;
+}
+
+body.dark-mode .sidebar a {
+    color: #eeeeee;
+}
+
+body.dark-mode .sidebar a:hover {
+    background: #2a2a2a;
+}
+
+body.dark-mode .sidebar a.active {
+    background: #333333;
+}
+
+
+/* cards */
+
+body.dark-mode .card {
+    background: #1b1b1b;
+    color: #eeeeee;
+}
+
+body.dark-mode .card-header {
+    background: #242424;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+
+/* form */
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background: #222222;
+    border-color: #3a3a3a;
+    color: #ffffff;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #aaaaaa;
+}
+
+
+/* table */
+
+body.dark-mode .table {
+    color: #eeeeee;
+}
+
+body.dark-mode .table-light {
+    --bs-table-bg: #242424;
+    --bs-table-color: #ffffff;
+}
+
+
+/* text muted */
+
+body.dark-mode .text-muted {
+    color: #aaaaaa !important;
+}
+
+
+/* =====================================================
+   THEME SWITCH
+===================================================== */
+
+.theme-switch {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-button {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 19px;
+
+    color: #212529;
+
+    transition: 0.2s;
+}
+
+.theme-button:hover {
+    background: #f0f1f3;
+}
+
+body.dark-mode .theme-button {
+    color: #ffffff;
+}
+
+body.dark-mode .theme-button:hover {
+    background: #2a2a2a;
+}
+
+
+/* =====================================================
+   RESPONSIVE TABLE
+===================================================== */
+
+.table-responsive {
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 991px) {
+
+    .main {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .sidebar {
+        width: 240px;
+    }
+
+}
+
+
+/* =====================================================
+   HP
+===================================================== */
+
+@media (max-width: 767px) {
+
+    .topbar {
+        height: 58px;
+
+        padding: 0 12px;
+    }
+
+    .sidebar {
+        top: 58px;
+
+        height: calc(100vh - 58px);
+
+        width: 270px;
+    }
+
+    .sidebar-overlay {
+        inset: 58px 0 0 0;
+    }
+
+    .main {
+        padding-top: 78px;
+
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .topbar-title {
+        font-size: 16px;
+    }
+
+    .sidebar-toggle {
+        width: 38px;
+        height: 38px;
+
+        font-size: 21px;
+    }
+
+    .theme-button {
+        width: 38px;
+        height: 38px;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .table {
+        font-size: 13px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+
+    .book-cover-peminjaman {
+        max-height: none;
+    }
+
+}
+
+
+/* =====================================================
+   HP KECIL
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .main {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .topbar-title {
+        font-size: 15px;
+    }
+
+    .sidebar {
+        width: 85%;
+        max-width: 290px;
+    }
+
+}
